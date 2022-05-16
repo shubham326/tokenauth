@@ -1,0 +1,24 @@
+install httpie using : pip install httpie
+
+#QuickStart
+
+#check user
+http http://127.0.0.1:8000/user/
+
+#create user
+http POST http://127.0.0.1:8000/user/ username=shubhamaggarwal password=aska9899
+
+#generate token for user
+http POST http://127.0.0.1:8000/gettoken/ username=shubhamaggarwal password=aska9899
+
+#get data authentication using token
+http http://127.0.0.1:8000/mess/ 'Authorization:Token (urtoken)'       ----no need username and password further need only token
+
+#post data authentication using token
+http POST http://127.0.0.1:8000/mess/ message="message" created_by=id 'Authorization:Token (Token)'
+#For Example
+http POST http://127.0.0.1:8000/mess/ message="ok" created_by=1 'Authorization:Token ec4d8ce2aba0fc9c59aec913d879c241173b57dd'
+
+
+Note there is no use of writeable nesting serializer so u can only perform read_only 
+if u want to use it for Post so u have to make sure that nesting serializer should be writeable or close/not_mention
